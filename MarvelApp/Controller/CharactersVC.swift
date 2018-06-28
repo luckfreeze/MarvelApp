@@ -27,7 +27,7 @@ class CharactersVC: UIViewController {
     private var limit = 20
     private var offSet = 0
     
-    var showAs = GridTable.tableView
+    var showAs = GridTable.collectionView
     
     let spinner: UIActivityIndicatorView = {
        let ai = UIActivityIndicatorView()
