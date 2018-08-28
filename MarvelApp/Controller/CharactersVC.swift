@@ -13,10 +13,13 @@ enum GridTable {
     case tableView
 }
 
-class CharactersVC: UIViewController {
+class CharactersVC: UIViewController, ErrorButtonDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    
+    private let spinner = Spinner()
+    private let errorButton = ErrorButton()
     
     private var marvelApi = MarvelAPI()
     
@@ -27,27 +30,9 @@ class CharactersVC: UIViewController {
     private var limit = 20
     private var offSet = 0
     
-    var showAs = GridTable.collectionView
+    private var showAs = GridTable.collectionView
     
-    let spinner: UIActivityIndicatorView = {
-       let ai = UIActivityIndicatorView()
-        ai.activityIndicatorViewStyle = .whiteLarge
-        ai.hidesWhenStopped = true
-        ai.color = UIColor.red
-        return ai
-    }()
-    
-    let errorButton: UIButton = {
-       let bt = UIButton()
-        bt.setTitle("Refazer o Request", for: UIControlState.normal)
-        bt.addTarget(self, action: #selector(getCharacters), for: UIControlEvents.touchUpInside)
-        bt.frame = CGRect(x: 0, y: 0, width: 240, height: 80)
-        bt.layer.cornerRadius = 5
-        bt.backgroundColor = UIColor.red
-        bt.tintColor = UIColor.white
-        return bt
-    }()
-    
+    // MARK: ViewController Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         firstConfig()
@@ -55,11 +40,11 @@ class CharactersVC: UIViewController {
         
     }
     
+    // MARK: Fist Configuration/ ViewDidLoad
     private func firstConfig() {
         
         view.addSubview(spinner)
-        spinner.center = view.center
-        spinner.startAnimating()
+        spinner.start()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -67,10 +52,13 @@ class CharactersVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.refreshControl = refrshControl
-        refrshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
+        errorButton.delegate = self
+        
+//        collectionView.refreshControl = refrshControl
+//        refrshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Change", style: UIBarButtonItemStyle.plain, target: self, action: #selector(changeTableCollection))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(handleRefresh))
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
@@ -79,6 +67,7 @@ class CharactersVC: UIViewController {
         layout.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout
     }
+    
     
     @objc func handleRefresh() {
         getCharacters()
@@ -89,7 +78,13 @@ class CharactersVC: UIViewController {
         animateView()
     }
     
-    @objc private func getCharacters() {
+    // MARK: ErrorButton Delegate function
+    internal func errorButtonAction() {
+        getCharacters()
+    }
+    
+    // MARK: API Call
+    private func getCharacters() {
         marvelApi.limit = limit
         marvelApi.offSet = offSet
         marvelApi.getCharacters { [weak self] (error, chars) in
@@ -109,7 +104,10 @@ class CharactersVC: UIViewController {
             }
         }
     }
-    
+}
+
+// MARK: Animations
+extension CharactersVC {
     private func animateCollectionView() {
         UIView.animate(withDuration: 0.7) {
             self.spinner.alpha = 0
@@ -134,9 +132,9 @@ class CharactersVC: UIViewController {
             showAs = .tableView
         }
     }
-    
 }
 
+// MARK: Push CharsVC/ Update tableView
 extension CharactersVC {
     func goToChar(name: String, bio: String, thumbPath: String) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "Character") as! CharacterVC
@@ -152,9 +150,6 @@ extension CharactersVC {
         }
     }
 }
-
-
-
 
 
 

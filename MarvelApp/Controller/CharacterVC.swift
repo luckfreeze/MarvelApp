@@ -13,6 +13,7 @@ class CharacterVC: UIViewController {
     
     @IBOutlet weak var imageThumb: UIImageView!
     @IBOutlet weak var biographyLbl: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
 
     var name: String?
     var thumbPath: String?
@@ -24,6 +25,10 @@ class CharacterVC: UIViewController {
         self.navigationItem.title = name
         self.imageThumb.downloadImage(path: thumbPath!)
         self.biographyLbl.text = (bio?.isEmpty)! ? "No description" : bio
+        
+        
+        scrollView.maximumZoomScale = 1.0
+//        scrollView.delegate = self
         
     }
 }

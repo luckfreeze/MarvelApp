@@ -50,3 +50,22 @@ class CharThumb: Mappable {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

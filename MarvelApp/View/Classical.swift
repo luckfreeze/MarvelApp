@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class ClassicalView: UIView {
     
-    // Some Default Values
+    // Some Default Values for shadow
     @IBInspectable var cornerRadius: CGFloat = 2
     @IBInspectable var shadowOffsetWidth: Int = 0
     @IBInspectable var shadowOffsetHeight: Int = 3

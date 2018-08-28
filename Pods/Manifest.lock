@@ -11,7 +11,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.1)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - CryptoSwift
     - Kingfisher
@@ -25,4 +25,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c2616396eee4e1a39b7cb62000a55302d97f87c1
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
