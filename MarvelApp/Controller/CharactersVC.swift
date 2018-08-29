@@ -37,7 +37,6 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         super.viewDidLoad()
         firstConfig()
         getCharacters()
-        
     }
     
     // MARK: Fist Configuration/ ViewDidLoad
@@ -136,13 +135,14 @@ extension CharactersVC {
 
 // MARK: Push CharsVC/ Update tableView
 extension CharactersVC {
-    func goToChar(name: String, bio: String, thumbPath: String) {
+    func goToChar(index: Int) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "Character") as! CharacterVC
-        vc.name = name
-        vc.bio = bio
-        vc.thumbPath = thumbPath
+        vc.name = myChars[index].name
+        vc.bio = myChars[index].biography
+        vc.thumbPath = myChars[index].thumb.getPath()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     func bringMoreChars(indexP: Int) {
         if indexP == self.myChars.count-1 {
             offSet += 20

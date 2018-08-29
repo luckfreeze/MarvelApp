@@ -30,9 +30,7 @@ extension CharactersVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        goToChar(name: myChars[indexPath.row].name,
-                 bio: myChars[indexPath.row].biography,
-                 thumbPath: myChars[indexPath.row].thumb.getPath())
+        goToChar(index: indexPath.row)
     }
 }
 
@@ -54,9 +52,8 @@ extension CharactersVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        goToChar(name: myChars[indexPath.row].name,
-                 bio: myChars[indexPath.row].biography,
-                 thumbPath: myChars[indexPath.row].thumb.getPath())
+        goToChar(index: indexPath.row)
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
