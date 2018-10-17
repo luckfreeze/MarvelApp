@@ -55,17 +55,3 @@ class CharThumb: Mappable {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

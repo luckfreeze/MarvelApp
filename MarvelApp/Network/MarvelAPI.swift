@@ -12,7 +12,7 @@ import ObjectMapper
 
 class MarvelAPI {
     
-    var limit = 20
+    var limit = 5
     var offSet = 0
     
     private var authParams: Parameters?
@@ -36,7 +36,11 @@ class MarvelAPI {
             let error = response.error
             let result = response.result
             
+            print(response.result)
+            print(response.value as Any)
+            
             if result.isSuccess {
+                
                 if let value = result.value as? Dictionary<String, AnyObject> {
                     if let data = value["data"] as? Dictionary<String, AnyObject> {
                         if let items = data["results"] as? [Dictionary<String, AnyObject>] {

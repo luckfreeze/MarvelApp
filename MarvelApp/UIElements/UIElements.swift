@@ -61,7 +61,7 @@ class ErrorButton: UIButton {
     @objc func handlebuttonClicked() {
         delegate.errorButtonAction()
     }
-}
+} // ErrorButton
 
 
 

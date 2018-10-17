@@ -10,7 +10,6 @@ import UIKit
 
 class CharactersTVC: UITableViewCell {
 
-
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var biography: UILabel!
     @IBOutlet weak var thumb: UIImageView!
