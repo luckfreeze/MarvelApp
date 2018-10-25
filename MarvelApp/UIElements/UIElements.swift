@@ -24,7 +24,7 @@ class Spinner: UIActivityIndicatorView {
     
     private func loadConfig() {
         self.hidesWhenStopped = true
-        self.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        self.style = UIActivityIndicatorView.Style.whiteLarge
         self.color = UIColor.red
         self.center = CGPoint(x: x / 2, y: y / 2)
     }
@@ -51,8 +51,8 @@ class ErrorButton: UIButton {
     }
     
     private func loadConfig() {
-        self.setTitle("Refazer Request", for: UIControlState.normal)
-        self.addTarget(self, action: #selector(handlebuttonClicked), for: UIControlEvents.touchUpInside)
+        self.setTitle("Refazer Request", for: UIControl.State.normal)
+        self.addTarget(self, action: #selector(handlebuttonClicked), for: UIControl.Event.touchUpInside)
         self.frame = CGRect(x: 0, y: 0, width: 240, height: 80)
         self.layer.cornerRadius = 5
         self.backgroundColor = UIColor.red

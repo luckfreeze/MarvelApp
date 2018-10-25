@@ -47,17 +47,19 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refrshControl
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.refreshControl = refrshControl
         
         errorButton.delegate = self
         
-//        collectionView.refreshControl = refrshControl
-//        refrshControl.addTarget(self, action: #selector(handleRefresh), for: UIControlEvents.valueChanged)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Change", style: UIBarButtonItemStyle.plain, target: self, action: #selector(changeTableCollection))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(handleRefresh))
+        refrshControl.addTarget(self, action: #selector(handleRefresh), for: UIControl.Event.valueChanged)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Change", style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeTableCollection))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.refresh, target: self, action: #selector(handleRefresh))
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
