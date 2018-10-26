@@ -9,6 +9,18 @@
 import Foundation
 import ObjectMapper
 
+class Result: Mappable {
+    var result: String
+    var characters = [Characters]()
+    required init?(map: Map) {
+        self.result = ""
+    }
+    func mapping(map: Map) {
+        self.result <- map["results"]
+        self.characters <- map["data.results"]
+    }
+}
+
 class Characters: Mappable {
     
     var id: Int

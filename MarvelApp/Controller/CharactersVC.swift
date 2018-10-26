@@ -55,7 +55,6 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         
         errorButton.delegate = self
         
-        
         refrshControl.addTarget(self, action: #selector(handleRefresh), for: UIControl.Event.valueChanged)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Change", style: UIBarButtonItem.Style.plain, target: self, action: #selector(changeTableCollection))
@@ -68,7 +67,6 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         layout.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout
     }
-    
     
     @objc func handleRefresh() {
         getCharacters()
@@ -88,20 +86,20 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     private func getCharacters() {
         marvelApi.limit = limit
         marvelApi.offSet = offSet
-        marvelApi.getCharacters { [weak self] (error, chars) in
+        marvelApi.getCharacters { (error, chars) in
             
             if error == nil {
-                self?.myChars += chars
-                self?.collectionView.reloadData()
-                self?.tableView.reloadData()
-                self?.animateCollectionView()
-                self?.errorButton.alpha = 0
+                self.myChars += chars
+                self.collectionView.reloadData()
+                self.tableView.reloadData()
+                self.animateCollectionView()
+                self.errorButton.alpha = 0
             } else {
-                self?.view.addSubview((self?.errorButton)!)
-                self?.errorButton.center = (self?.view.center)!
-                self?.collectionView.alpha = 0
-                self?.tableView.alpha = 0
-                self?.spinner.alpha = 0
+                self.view.addSubview(self.errorButton)
+                self.errorButton.center = self.view.center
+                self.collectionView.alpha = 0
+                self.tableView.alpha = 0
+                self.spinner.alpha = 0
             }
         }
     }

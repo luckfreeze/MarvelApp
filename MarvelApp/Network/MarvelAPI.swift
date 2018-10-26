@@ -42,18 +42,9 @@ class MarvelAPI {
             if result.isSuccess {
                 
                 if let value = result.value as? Dictionary<String, AnyObject> {
-                    if let data = value["data"] as? Dictionary<String, AnyObject> {
-                        if let items = data["results"] as? [Dictionary<String, AnyObject>] {
-                            for item in items {
-                                let itemMapped = Mapper<Characters>().map(JSON: item)
-                                charsData.append(itemMapped!)
-                                
-                            }
-                        }
-                        
-                    }
-                }
-                
+                    let itemMapped = Mapper<Result>().map(JSON: value)
+                    charsData = itemMapped!.characters
+                } // End value
                 completion(error, charsData)
             } else {
                 completion(error, charsData)

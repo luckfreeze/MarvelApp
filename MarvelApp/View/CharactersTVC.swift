@@ -25,5 +25,4 @@ class CharactersTVC: UITableViewCell {
         self.biography.text = data.biography.isEmpty ? "No description" : data.biography
         self.thumb.downloadImage(path: data.thumb.getPath())
     }
-    
 }
