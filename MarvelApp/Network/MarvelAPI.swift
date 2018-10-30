@@ -12,7 +12,7 @@ import ObjectMapper
 
 class MarvelAPI {
     
-    var limit = 5
+    var limit = 0
     var offSet = 0
     
     private var authParams: Parameters?
@@ -44,7 +44,7 @@ class MarvelAPI {
                 if let value = result.value as? Dictionary<String, AnyObject> {
                     let itemMapped = Mapper<Result>().map(JSON: value)
                     charsData = itemMapped!.characters
-                } // End value
+                }
                 completion(error, charsData)
             } else {
                 completion(error, charsData)
