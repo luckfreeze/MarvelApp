@@ -9,15 +9,7 @@
 import UIKit
 
 /// Extension for CollectionView Methods - Dels and DtSource
-extension CharactersVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myChars.count
-    }
+extension CharactersVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let charCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharactersCollectionCell", for: indexPath) as! CharactersCVC
@@ -34,16 +26,18 @@ extension CharactersVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
-/// Extension for TableView Methods - Dels and DtSource
-extension CharactersVC: UITableViewDelegate, UITableViewDataSource {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
+extension CharactersVC: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myChars.count
     }
+}
+
+/// Extension for TableView Methods - Dels and DtSource
+extension CharactersVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let charTableCell = tableView.dequeueReusableCell(withIdentifier: "CharactersTableCell", for: indexPath) as! CharactersTVC
@@ -65,10 +59,17 @@ extension CharactersVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
-    
 }
 
-
+extension CharactersVC: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myChars.count
+    }
+}
 
 
 

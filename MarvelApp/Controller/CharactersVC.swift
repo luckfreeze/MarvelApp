@@ -23,7 +23,7 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     
     private var marvelApi = MarvelAPI()
     
-    var myChars = [Characters]()
+    private(set) var myChars = [Characters]()
     
     private var refrshControl = UIRefreshControl()
     
@@ -75,9 +75,9 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     }
     
     @objc func changeTableOrCollection() {
-        let currentIndexPathForView = self.tableView.indexPathsForVisibleRows ?? self.collectionView.indexPathsForVisibleItems
+        //let currentIndexPathForView = self.tableView.indexPathsForVisibleRows ?? self.collectionView.indexPathsForVisibleItems
         
-        animateView(currentIndexPathForView.last!)
+        animateView()
     }
     
     // MARK: ErrorButton Delegate function
@@ -118,20 +118,20 @@ extension CharactersVC {
         }
     }
     
-    private func animateView(_ indexP: IndexPath = IndexPath()) {
+    private func animateView() {//(_ indexP: IndexPath = IndexPath()) {
         switch showAs {
         case .tableView:
             UIView.animate(withDuration: 0.3) {
                 self.collectionView.alpha = 0
                 self.tableView.alpha = 1
-                self.tableView.scrollToRow(at: indexP, at: UITableView.ScrollPosition.top, animated: false)
+                //self.tableView.scrollToRow(at: indexP, at: UITableView.ScrollPosition.top, animated: false)
             }
             showAs = .collectionView
         case .collectionView:
             UIView.animate(withDuration: 0.3) {
                 self.collectionView.alpha = 1
                 self.tableView.alpha = 0
-                self.collectionView.scrollToItem(at: indexP, at: UICollectionView.ScrollPosition.right, animated: false)
+                //self.collectionView.scrollToItem(at: indexP, at: UICollectionView.ScrollPosition.right, animated: false)
             }
             showAs = .tableView
         }
@@ -155,16 +155,3 @@ extension CharactersVC {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
