@@ -10,9 +10,6 @@ import UIKit
 
 class Spinner: UIActivityIndicatorView {
     
-    let x = UIScreen.main.bounds.width
-    let y = UIScreen.main.bounds.height
-    
     override init(frame: CGRect = CGRect.zero) {
         super.init(frame: frame)
         loadConfig()
@@ -26,7 +23,7 @@ class Spinner: UIActivityIndicatorView {
         self.hidesWhenStopped = true
         self.style = UIActivityIndicatorView.Style.whiteLarge
         self.color = UIColor.red
-        self.center = CGPoint(x: x / 2, y: y / 2)
+        self.center = Metrics.getCenter()
     }
     
     func stop() {

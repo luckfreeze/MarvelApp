@@ -89,20 +89,22 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     private func getCharacters() {
         marvelApi.limit = limit
         marvelApi.offSet = offSet
-        marvelApi.getCharacters { (error, chars) in
+        marvelApi.getCharacters { [weak self] (error, chars) in
+            
+            guard let vc = self else { return }
             
             if error == nil {
-                self.myChars += chars
-                self.collectionView.reloadData()
-                self.tableView.reloadData()
-                self.animateCollectionView()
-                self.errorButton.alpha = 0
+                vc.myChars += chars
+                vc.collectionView.reloadData()
+                vc.tableView.reloadData()
+                vc.animateCollectionView()
+                vc.errorButton.alpha = 0
             } else {
-                self.view.addSubview(self.errorButton)
-                self.errorButton.center = self.view.center
-                self.collectionView.alpha = 0
-                self.tableView.alpha = 0
-                self.spinner.alpha = 0
+                vc.view.addSubview(vc.errorButton)
+                vc.errorButton.center = vc.view.center
+                vc.collectionView.alpha = 0
+                vc.tableView.alpha = 0
+                vc.spinner.alpha = 0
             }
         }
     }
