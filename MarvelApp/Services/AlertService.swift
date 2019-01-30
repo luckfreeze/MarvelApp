@@ -9,7 +9,9 @@
 import UIKit
 
 class AlertService {
+    
     typealias AlertCompletion = () -> ()
+    
     static func defaultNoAction(in ViewController: UIViewController, title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         let okAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)

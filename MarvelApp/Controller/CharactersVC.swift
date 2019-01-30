@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum GridTable {
+fileprivate enum GridTable {
     case collectionView
     case tableView
 }
@@ -29,7 +29,6 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     
     private var limit = 20
     private var offSet = 0
-    //private var currentIndexPathForView = IndexPath()
     
     private var showAs = GridTable.collectionView
     
@@ -75,8 +74,6 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     }
     
     @objc func changeTableOrCollection() {
-        //let currentIndexPathForView = self.tableView.indexPathsForVisibleRows ?? self.collectionView.indexPathsForVisibleItems
-        
         animateView()
     }
     
@@ -99,6 +96,7 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
                 vc.tableView.reloadData()
                 vc.animateCollectionView()
                 vc.errorButton.alpha = 0
+                // vc.errorButton.removeFromSuperview() ?
             } else {
                 vc.view.addSubview(vc.errorButton)
                 vc.errorButton.center = vc.view.center
@@ -120,20 +118,18 @@ extension CharactersVC {
         }
     }
     
-    private func animateView() {//(_ indexP: IndexPath = IndexPath()) {
+    private func animateView() {
         switch showAs {
         case .tableView:
             UIView.animate(withDuration: 0.3) {
                 self.collectionView.alpha = 0
                 self.tableView.alpha = 1
-                //self.tableView.scrollToRow(at: indexP, at: UITableView.ScrollPosition.top, animated: false)
             }
             showAs = .collectionView
         case .collectionView:
             UIView.animate(withDuration: 0.3) {
                 self.collectionView.alpha = 1
                 self.tableView.alpha = 0
-                //self.collectionView.scrollToItem(at: indexP, at: UICollectionView.ScrollPosition.right, animated: false)
             }
             showAs = .tableView
         }

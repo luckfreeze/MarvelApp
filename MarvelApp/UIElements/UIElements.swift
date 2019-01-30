@@ -29,9 +29,11 @@ class Spinner: UIActivityIndicatorView {
     func stop() {
         self.stopAnimating()
     }
+    
     func start() {
         self.startAnimating()
     }
+    
 } // Spinner
 
 
@@ -43,6 +45,7 @@ class ErrorButton: UIButton {
         super.init(frame: frame)
         loadConfig()
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -58,6 +61,7 @@ class ErrorButton: UIButton {
     @objc func handlebuttonClicked() {
         delegate.errorButtonAction()
     }
+    
 } // ErrorButton
 
 

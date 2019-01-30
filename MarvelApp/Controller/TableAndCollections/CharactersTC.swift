@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Extension for CollectionView Methods - Dels and DtSource
+// MARK: Extension for CollectionView Methods - Dels and DtSource
 extension CharactersVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,7 +36,7 @@ extension CharactersVC: UICollectionViewDataSource {
     }
 }
 
-/// Extension for TableView Methods - Dels and DtSource
+// MARK: Extension for TableView Methods - Dels and DtSource
 extension CharactersVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

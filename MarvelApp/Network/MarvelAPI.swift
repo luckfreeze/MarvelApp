@@ -40,11 +40,10 @@ class MarvelAPI {
             print(response.value as Any)
             
             if result.isSuccess {
-                
-                if let value = result.value as? Dictionary<String, AnyObject> {
-                    let itemMapped = Mapper<Result>().map(JSON: value)
-                    charsData = itemMapped!.characters
-                }
+
+                guard let value = result.value as? Dictionary<String, AnyObject> else { return }
+                let itemMapped = Mapper<Result>().map(JSON: value)!
+                charsData = itemMapped.characters
                 completion(error, charsData)
             } else {
                 completion(error, charsData)
