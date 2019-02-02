@@ -22,7 +22,7 @@ extension CharactersVC: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        goToChar(index: indexPath.row)
+        goToChar(row: indexPath.row, indexP: indexPath)
     }
 }
 
@@ -46,7 +46,7 @@ extension CharactersVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        goToChar(index: indexPath.row)
+        goToChar(row: indexPath.row, indexP: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

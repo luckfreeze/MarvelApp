@@ -15,7 +15,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IcV-LI-ib3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Ec9-Et-KxJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ec9-Et-KxJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -29,25 +29,25 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="delegate" destination="GzA-Di-uFK" id="Yjl-Tu-pzt"/>
+                        <outlet property="delegate" destination="GzA-Di-uFK" id="4qn-PK-206"/>
                         <segue destination="wNf-gR-HyV" kind="relationship" relationship="rootViewController" id="nER-jC-E2P"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GaB-XN-6c4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="GzA-Di-uFK" customClass="ZoomTransition" customModule="MarvelApp" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="132" y="118"/>
+            <point key="canvasLocation" x="38" y="116"/>
         </scene>
         <!--Marvel App-->
         <scene sceneID="HCK-qQ-Srf">
             <objects>
                 <viewController storyboardIdentifier="Characters" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wNf-gR-HyV" customClass="CharactersVC" customModule="MarvelApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mmC-Sr-GUy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4u7-ef-Fp6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jPb-8r-Z30">
                                     <size key="itemSize" width="160" height="245"/>
@@ -109,7 +109,7 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ExG-KW-dVm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CharactersTableCell" rowHeight="160" id="3LB-VY-haE" customClass="CharactersTVC" customModule="MarvelApp" customModuleProvider="target">
@@ -214,6 +214,7 @@
                     <connections>
                         <outlet property="collectionView" destination="4u7-ef-Fp6" id="mlH-kH-8RS"/>
                         <outlet property="tableView" destination="ExG-KW-dVm" id="29g-gj-8GS"/>
+                        <segue destination="zhK-eC-Nug" kind="show" identifier="showCharacter" id="dgh-uR-qwU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWv-kk-dEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,43 +229,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szd-a8-euq">
-                                <rect key="frame" x="-20" y="0.0" width="415" height="667"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOt-CE-DEZ">
-                                        <rect key="frame" x="36" y="408" width="343" height="239"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="239" id="RVc-xL-Z8n"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ObD-M4-tbQ">
-                                        <rect key="frame" x="20" y="0.0" width="375" height="380"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="380" id="99K-Zf-Go0"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MockImage" translatesAutoresizingMaskIntoConstraints="NO" id="ObD-M4-tbQ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOt-CE-DEZ">
+                                <rect key="frame" x="16" y="447" width="343" height="200"/>
                                 <constraints>
-                                    <constraint firstItem="ObD-M4-tbQ" firstAttribute="centerX" secondItem="szd-a8-euq" secondAttribute="centerX" id="2qU-ey-f9B"/>
-                                    <constraint firstItem="ObD-M4-tbQ" firstAttribute="leading" secondItem="szd-a8-euq" secondAttribute="leading" constant="20" id="FZR-ns-K74"/>
-                                    <constraint firstAttribute="trailing" secondItem="ObD-M4-tbQ" secondAttribute="trailing" constant="20" id="I7K-sM-TUL"/>
-                                    <constraint firstAttribute="bottom" secondItem="rOt-CE-DEZ" secondAttribute="bottom" constant="20" id="blo-4e-ihN"/>
-                                    <constraint firstItem="ObD-M4-tbQ" firstAttribute="centerX" secondItem="rOt-CE-DEZ" secondAttribute="centerX" id="iBF-2h-HZV"/>
-                                    <constraint firstItem="ObD-M4-tbQ" firstAttribute="top" secondItem="szd-a8-euq" secondAttribute="top" id="mCz-rl-fik"/>
-                                    <constraint firstItem="rOt-CE-DEZ" firstAttribute="top" secondItem="ObD-M4-tbQ" secondAttribute="bottom" constant="28" id="mi9-ze-Mcm"/>
-                                    <constraint firstItem="rOt-CE-DEZ" firstAttribute="leading" secondItem="szd-a8-euq" secondAttribute="leading" constant="36" id="nuE-fg-9du"/>
+                                    <constraint firstAttribute="height" constant="200" id="CBo-Ty-IaA"/>
                                 </constraints>
-                            </scrollView>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="szd-a8-euq" firstAttribute="leading" secondItem="h7J-He-cfT" secondAttribute="leadingMargin" constant="-36" id="UEu-qr-zVL"/>
-                            <constraint firstItem="szd-a8-euq" firstAttribute="top" secondItem="h7J-He-cfT" secondAttribute="top" id="XQP-Ty-Veq"/>
-                            <constraint firstItem="szd-a8-euq" firstAttribute="centerX" secondItem="h7J-He-cfT" secondAttribute="centerX" id="YxK-vE-rw5"/>
-                            <constraint firstItem="szd-a8-euq" firstAttribute="bottom" secondItem="TCh-Ji-3bI" secondAttribute="bottom" id="qzy-Uy-4w8"/>
+                            <constraint firstItem="TCh-Ji-3bI" firstAttribute="trailing" secondItem="rOt-CE-DEZ" secondAttribute="trailing" constant="16" id="7mJ-15-Nqh"/>
+                            <constraint firstItem="ObD-M4-tbQ" firstAttribute="leading" secondItem="TCh-Ji-3bI" secondAttribute="leading" id="SeL-JJ-75O"/>
+                            <constraint firstItem="TCh-Ji-3bI" firstAttribute="bottom" secondItem="rOt-CE-DEZ" secondAttribute="bottom" constant="20" id="bBO-Lw-XWR"/>
+                            <constraint firstItem="rOt-CE-DEZ" firstAttribute="top" secondItem="ObD-M4-tbQ" secondAttribute="bottom" constant="8" id="bCm-GD-NRb"/>
+                            <constraint firstItem="rOt-CE-DEZ" firstAttribute="leading" secondItem="TCh-Ji-3bI" secondAttribute="leading" constant="16" id="kKl-0k-aCi"/>
+                            <constraint firstItem="ObD-M4-tbQ" firstAttribute="trailing" secondItem="TCh-Ji-3bI" secondAttribute="trailing" id="upd-HB-z8n"/>
+                            <constraint firstItem="ObD-M4-tbQ" firstAttribute="top" secondItem="h7J-He-cfT" secondAttribute="top" constant="64" id="zZp-n3-IEi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TCh-Ji-3bI"/>
                     </view>
@@ -275,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEI-LA-nGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1453.5999999999999" y="116.49175412293854"/>
+            <point key="canvasLocation" x="1693.5999999999999" y="116.49175412293854"/>
         </scene>
     </scenes>
     <resources>

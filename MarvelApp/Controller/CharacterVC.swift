@@ -16,14 +16,24 @@ class CharacterVC: UIViewController {
 
     var name: String?
     var thumbPath: String?
+    var image: UIImage?
     var bio: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = name
-        self.imageThumb.downloadImage(path: thumbPath!)
+        imageThumb.image = image
         self.biographyLbl.text = (bio?.isEmpty)! ? "No description" : bio
-        
+    }
+}
+
+extension CharacterVC: ZoomTransitionDelegate {
+    func zoomCharacterImageView(for transition: ZoomTransition) -> UIImageView? {
+        return imageThumb
+    }
+    
+    func zoomForBackgroundView(for transition: ZoomTransition) -> UIView? {
+        return nil
     }
 }

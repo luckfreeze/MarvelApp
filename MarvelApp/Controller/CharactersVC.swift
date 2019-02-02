@@ -30,7 +30,9 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     private var limit = 20
     private var offSet = 0
     
-    private var showAs = GridTable.collectionView
+    private var showAs = GridTable.tableView
+    
+    var selectedIndexPath: IndexPath?
     
     // MARK: ViewController Lifecycle
     override func viewDidLoad() {
@@ -51,7 +53,7 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.refreshControl = refrshControl
+        //collectionView.refreshControl = refrshControl
         
         errorButton.delegate = self
         
@@ -106,6 +108,31 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
             }
         }
     }
+    
+    func goToChar(row: Int, indexP: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "Character") as! CharacterVC
+        let thumb: UIImage!
+        
+        switch self.showAs {
+        case .tableView:
+            let tablV = self.tableView.cellForRow(at: indexP ) as? CharactersTVC
+            thumb = tablV?.thumb.image
+        case .collectionView:
+            let collV = self.collectionView.cellForItem(at: indexP ) as? CharactersCVC
+            thumb = collV?.thumb.image
+        }
+        
+        let imageThumb = thumb
+        
+        self.selectedIndexPath = indexP
+        
+        vc.name = myChars[row].name
+        vc.bio = myChars[row].biography
+        vc.thumbPath = myChars[row].thumb.getPath()
+        vc.image = imageThumb
+    
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: Animations
@@ -119,37 +146,49 @@ extension CharactersVC {
     }
     
     private func animateView() {
-        switch showAs {
+        switch self.showAs {
         case .tableView:
-            UIView.animate(withDuration: 0.3) {
-                self.collectionView.alpha = 0
-                self.tableView.alpha = 1
-            }
-            showAs = .collectionView
-        case .collectionView:
             UIView.animate(withDuration: 0.3) {
                 self.collectionView.alpha = 1
                 self.tableView.alpha = 0
             }
-            showAs = .tableView
+            self.showAs = .collectionView
+        case .collectionView:
+            UIView.animate(withDuration: 0.3) {
+                self.collectionView.alpha = 0
+                self.tableView.alpha = 1
+            }
+            self.showAs = .tableView
         }
     }
 }
 
 // MARK: Push CharsVC/ Update tableView
 extension CharactersVC {
-    func goToChar(index: Int) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "Character") as! CharacterVC
-        vc.name = myChars[index].name
-        vc.bio = myChars[index].biography
-        vc.thumbPath = myChars[index].thumb.getPath()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     func bringMoreChars(indexP: Int) {
         if indexP == self.myChars.count-1 {
             offSet += 20
             getCharacters()
         }
+    }
+}
+
+extension CharactersVC: ZoomTransitionDelegate {
+    
+    func zoomForBackgroundView(for transition: ZoomTransition) -> UIView? {
+        return nil
+    }
+    
+    func zoomCharacterImageView(for transition: ZoomTransition) -> UIImageView? {
+        let thumbIV: UIImageView!
+        switch self.showAs {
+        case .tableView:
+            let tablV = self.tableView.cellForRow(at: selectedIndexPath!) as? CharactersTVC
+            thumbIV = tablV?.thumb
+        case .collectionView:
+            let collV = self.collectionView.cellForItem(at: selectedIndexPath!) as? CharactersCVC
+            thumbIV = collV?.thumb
+    }
+        return thumbIV
     }
 }
