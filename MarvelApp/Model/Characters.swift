@@ -10,11 +10,14 @@ import Foundation
 import ObjectMapper
 
 class Result: Mappable {
+    
     var result: String
     var characters = [Characters]()
+    
     required init?(map: Map) {
         self.result = ""
     }
+    
     func mapping(map: Map) {
         self.result <- map["results"]
         self.characters <- map["data.results"]
@@ -55,7 +58,7 @@ class CharThumb: Mappable {
         self.thumbExtention <- map["extension"]
     }
     
-    // Returning the full path of thumb to download
+    // Returning the full path to download thumb
     func getPath() -> String {
         return "\(path).\(thumbExtention)"
     }

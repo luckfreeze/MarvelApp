@@ -20,6 +20,7 @@ class CharactersTVC: UITableViewCell {
         thumb.layer.cornerRadius = 5
     }
     
+    // Avoiding massive cell for row at indexPath
     func configCell(data: Characters) {
         self.name.text = data.name
         self.biography.text = data.biography.isEmpty ? "No description" : data.biography

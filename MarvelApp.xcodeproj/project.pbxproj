@@ -142,7 +142,6 @@
 		4E9EA39E2093BF7100134CF4 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE7A493920E56D7D00D904F1 /* UIElements */,
 				4E9EA3D42093C4CD00134CF4 /* Model */,
 				4E9EA3D52093C4E000134CF4 /* View */,
 				4E9EA3CD2093BF8F00134CF4 /* Controller */,
@@ -229,8 +228,9 @@
 		4E9EA3D52093C4E000134CF4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE7A493920E56D7D00D904F1 /* UIElements */,
 				844A95662203BBC300ECD903 /* Cells */,
-				844A95652203BBB800ECD903 /* UI */,
+				844A95652203BBB800ECD903 /* Designable */,
 				844A95672203BBD500ECD903 /* Transition */,
 			);
 			path = View;
@@ -245,12 +245,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		844A95652203BBB800ECD903 /* UI */ = {
+		844A95652203BBB800ECD903 /* Designable */ = {
 			isa = PBXGroup;
 			children = (
 				4ECEDEFD209793600087D76C /* Classical.swift */,
 			);
-			path = UI;
+			path = Designable;
 			sourceTree = "<group>";
 		};
 		844A95662203BBC300ECD903 /* Cells */ = {

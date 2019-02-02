@@ -70,6 +70,7 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         collectionView.collectionViewLayout = layout
     }
     
+    // MARK: NavigationBar Button Functions
     @objc func handleRefresh() {
         getCharacters()
         self.refrshControl.endRefreshing()
@@ -80,11 +81,11 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     }
     
     // MARK: ErrorButton Delegate function
-    internal func errorButtonAction() {
-        getCharacters()
+    func errorButtonAction() {
+        animateWhenGetError()
     }
     
-    // MARK: API Call
+    // MARK: Marvel API Call
     private func getCharacters() {
         marvelApi.limit = limit
         marvelApi.offSet = offSet
@@ -98,7 +99,6 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
                 vc.tableView.reloadData()
                 vc.animateCollectionView()
                 vc.errorButton.alpha = 0
-                // vc.errorButton.removeFromSuperview() ?
             } else {
                 vc.view.addSubview(vc.errorButton)
                 vc.errorButton.center = vc.view.center
@@ -109,27 +109,26 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         }
     }
     
+    // MARK: Perform push to next VC
     func goToChar(row: Int, indexP: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "Character") as! CharacterVC
         let thumb: UIImage!
         
         switch self.showAs {
         case .tableView:
-            let tablV = self.tableView.cellForRow(at: indexP ) as? CharactersTVC
+            let tablV = self.tableView.cellForRow(at: indexP) as? CharactersTVC
             thumb = tablV?.thumb.image
         case .collectionView:
-            let collV = self.collectionView.cellForItem(at: indexP ) as? CharactersCVC
+            let collV = self.collectionView.cellForItem(at: indexP) as? CharactersCVC
             thumb = collV?.thumb.image
         }
-        
-        let imageThumb = thumb
         
         self.selectedIndexPath = indexP
         
         vc.name = myChars[row].name
         vc.bio = myChars[row].biography
         vc.thumbPath = myChars[row].thumb.getPath()
-        vc.image = imageThumb
+        vc.image = thumb
     
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -161,6 +160,15 @@ extension CharactersVC {
             self.showAs = .tableView
         }
     }
+    
+    private func animateWhenGetError() {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.errorButton.alpha = 0
+            self.spinner.alpha = 1
+        }) { (_) in
+            self.getCharacters()
+        }
+    }
 }
 
 // MARK: Push CharsVC/ Update tableView
@@ -173,6 +181,7 @@ extension CharactersVC {
     }
 }
 
+// MARK: Transition Animated protocol
 extension CharactersVC: ZoomTransitionDelegate {
     
     func zoomForBackgroundView(for transition: ZoomTransition) -> UIView? {

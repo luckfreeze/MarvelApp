@@ -21,7 +21,7 @@ class ClassicalView: UIView {
     
     override func layoutSubviews() {
         layer.cornerRadius = cornerRadius
-        let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius) // draw the shadows
+        let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         
         layer.masksToBounds = false
         layer.shadowColor = shadowColor.cgColor

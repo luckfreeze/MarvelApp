@@ -15,7 +15,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IcV-LI-ib3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ec9-Et-KxJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Ec9-Et-KxJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -214,7 +214,6 @@
                     <connections>
                         <outlet property="collectionView" destination="4u7-ef-Fp6" id="mlH-kH-8RS"/>
                         <outlet property="tableView" destination="ExG-KW-dVm" id="29g-gj-8GS"/>
-                        <segue destination="zhK-eC-Nug" kind="show" identifier="showCharacter" id="dgh-uR-qwU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWv-kk-dEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEI-LA-nGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693.5999999999999" y="116.49175412293854"/>
+            <point key="canvasLocation" x="1588" y="115.59220389805098"/>
         </scene>
     </scenes>
     <resources>

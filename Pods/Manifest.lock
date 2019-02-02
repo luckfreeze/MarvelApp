@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (4.8.0)
-  - CryptoSwift (0.13.0)
-  - Kingfisher (4.10.1)
-  - ObjectMapper (3.4.1)
+  - Alamofire (4.8.1)
+  - CryptoSwift (0.13.1)
+  - Kingfisher (5.1.0)
+  - ObjectMapper (3.4.2)
 
 DEPENDENCIES:
   - Alamofire
@@ -18,10 +18,10 @@ SPEC REPOS:
     - ObjectMapper
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  CryptoSwift: 16e78bebf567bad1c87b2d58f6547f25b74c31aa
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
 
 PODFILE CHECKSUM: 19cb1807983319dbc72245f8e15949e7d5288107
 

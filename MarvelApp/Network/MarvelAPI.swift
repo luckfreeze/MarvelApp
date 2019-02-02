@@ -36,6 +36,7 @@ class MarvelAPI {
             let error = response.error
             let result = response.result
             
+            print("\n\n - RESPONSE:")
             print(response.result)
             print(response.value as Any)
             

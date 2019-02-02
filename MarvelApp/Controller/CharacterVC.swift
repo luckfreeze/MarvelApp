@@ -26,6 +26,13 @@ class CharacterVC: UIViewController {
         imageThumb.image = image
         self.biographyLbl.text = (bio?.isEmpty)! ? "No description" : bio
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIView.animate(withDuration: 0.1) {
+            self.biographyLbl.alpha = 0
+        }
+    }
 }
 
 extension CharacterVC: ZoomTransitionDelegate {
