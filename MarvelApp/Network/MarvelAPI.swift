@@ -38,7 +38,10 @@ class MarvelAPI {
             
             print("\n\n - RESPONSE:")
             print(response.result)
-            print(response.value as Any)
+            print("\n - STATUS CODE:")
+            print(response.response!.statusCode)
+            print("\n - VALUE:")
+            print(response.value!)
             
             if result.isSuccess {
 
