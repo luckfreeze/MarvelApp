@@ -1,28 +1,30 @@
 PODS:
   - Alamofire (4.8.1)
   - CryptoSwift (0.13.1)
-  - Kingfisher (5.1.0)
-  - ObjectMapper (3.4.2)
+  - KIF (3.7.7):
+    - KIF/Core (= 3.7.7)
+  - KIF/Core (3.7.7)
+  - Nuke (7.6.3)
 
 DEPENDENCIES:
   - Alamofire
   - CryptoSwift
-  - Kingfisher
-  - ObjectMapper
+  - KIF
+  - Nuke
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - CryptoSwift
-    - Kingfisher
-    - ObjectMapper
+    - KIF
+    - Nuke
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
-  Kingfisher: fcec238063d17404fca89bf0a850583211c4cbf6
-  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  KIF: 6f525b18d4cca3d6445f3c5d683294e9157bd3f4
+  Nuke: 44130e95e09463f8773ae4b96b90de1eba6b3350
 
-PODFILE CHECKSUM: 19cb1807983319dbc72245f8e15949e7d5288107
+PODFILE CHECKSUM: ad55ae7d5c03550621c794146251e179f885f4d4
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.1

@@ -7,13 +7,13 @@ target 'MarvelApp' do
 
   # Pods for MarvelApp
 
-	pod 'Kingfisher'
 	pod 'CryptoSwift'
 	pod 'Alamofire'
-    	pod 'ObjectMapper'
+	pod 'Nuke'
 
   target 'MarvelAppTests' do
     inherit! :search_paths
+    pod 'KIF'
   end
 
   target 'MarvelAppUITests' do

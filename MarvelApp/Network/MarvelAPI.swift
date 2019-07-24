@@ -8,9 +8,13 @@
 
 import Foundation
 import Alamofire
-import ObjectMapper
 
 class MarvelAPI {
+    
+    enum MarvelAPIError {
+        case Error
+        case NoError
+    }
     
     var limit = 0
     var offSet = 0
@@ -44,15 +48,28 @@ class MarvelAPI {
             print(response.value!)
             
             if result.isSuccess {
-
-                guard let value = result.value as? Dictionary<String, AnyObject> else { return }
-                let itemMapped = Mapper<Result>().map(JSON: value)!
-                charsData = itemMapped.characters
-                completion(error, charsData)
+                
+                guard let data = response.data else {
+                    completion(MarvelAPIError.Error, charsData)
+                    return
+                }
+                let charsMapped = try? JSONDecoder().decode(Data.self, from: data)
+                charsData = (charsMapped?.data.results)!
+                completion(MarvelAPIError.NoError, charsData)
             } else {
-                completion(error, charsData)
+                completion(MarvelAPIError.Error, charsData)
             }
         }
+    }
+    
+    private func printSystem(_ object: DataResponse<Any>) {
+        
+        print("\n\n - RESPONSE:")
+        print(object.result)
+        print("\n - STATUS CODE:")
+        print(object.response!.statusCode)
+        print("\n - VALUE:")
+        print(object.value!)
     }
 }
 

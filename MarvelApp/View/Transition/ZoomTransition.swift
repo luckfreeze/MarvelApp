@@ -64,7 +64,6 @@ extension ZoomTransition: UIViewControllerAnimatedTransitioning {
         let maybeBackgroundImageView = (backgroundVC as? ZoomTransitionDelegate)?.zoomCharacterImageView(for: self)
         let maybeForegroundImageView = (foregroundVC as? ZoomTransitionDelegate)?.zoomCharacterImageView(for: self)
         
-        // If ViewController do not conform to ZoomTransitionDelegate protocol
         assert(maybeBackgroundImageView != nil, "Cannot find ImageView in background in ViewController")
         assert(maybeForegroundImageView != nil, "Cannot find ImageView in foreground in ViewController")
         

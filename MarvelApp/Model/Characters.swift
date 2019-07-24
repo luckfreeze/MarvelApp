@@ -7,65 +7,35 @@
 //
 
 import Foundation
-import ObjectMapper
 
-class Result: Mappable {
-    
-    var result: String
-    var characters = [Characters]()
-    
-    required init?(map: Map) {
-        self.result = ""
-    }
-    
-    func mapping(map: Map) {
-        self.result <- map["results"]
-        self.characters <- map["data.results"]
-    }
+class Data: Codable {
+    var data: Result
 }
 
-class Characters: Mappable {
-    
+class Result: Codable {
+    var results: [Character]
+}
+
+class Character: Codable {
     var id: Int
     var name: String
-    var biography: String
-    var thumb: CharThumb!
-    
-    required init?(map: Map) {
-        
-        id = 0
-        name = ""
-        biography = ""
-    }
-    
-    func mapping(map: Map) {
-        self.id <- map["id"]
-        self.name <- map["name"]
-        self.biography <- map["description"]
-        self.thumb <- map["thumbnail"]
-    }
+    var description: String
+    var thumbnail: CharThumb
 }
 
-class CharThumb: Mappable {
+class CharThumb: Codable {
+    var path: String
+    var thumbExtention: String
     
-    var path: String = ""
-    var thumbExtention: String = ""
-    
-    required init?(map: Map) {}
-    
-    func mapping(map: Map) {
-        self.path <- map["path"]
-        self.thumbExtention <- map["extension"]
+    enum CodingKeys: String, CodingKey {
+        case path
+        case thumbExtention = "extension"
     }
     
-    // Returning the full path to download thumb
-    func getPath() -> String {
+    func getCharThumbnail() -> String {
         return "\(path).\(thumbExtention)"
     }
 }
-
-
-
 
 
 
