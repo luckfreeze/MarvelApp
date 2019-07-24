@@ -12,7 +12,7 @@ import UIKit
 extension CharactersVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let charCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharactersCollectionCell", for: indexPath) as! CharactersCVC
+        let charCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharactersCollectionCell", for: indexPath) as! CharacterCVC
         charCollectionCell.configCell(data: self.myChars[indexPath.row])
         return charCollectionCell
     }
@@ -40,7 +40,7 @@ extension CharactersVC: UICollectionViewDataSource {
 extension CharactersVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let charTableCell = tableView.dequeueReusableCell(withIdentifier: "CharactersTableCell", for: indexPath) as! CharactersTVC
+        let charTableCell = tableView.dequeueReusableCell(withIdentifier: "CharactersTableCell", for: indexPath) as! CharacterTVC
         charTableCell.configCell(data: self.myChars[indexPath.row])
         return charTableCell
     }
@@ -71,13 +71,96 @@ extension CharactersVC: UITableViewDataSource {
     }
 }
 
+// MARK: CollectionView DataSource and Delegate
+class MarvelCollectionViewDatasource: NSObject, UICollectionViewDataSource {
+    
+    var data = [Character]()
+    weak var delegate: UICollectionViewDelegate?
+    weak var collectionView: UICollectionView?
+    
+    required init(data: [Character], collectionView: UICollectionView, delegate: UICollectionViewDelegate) {
+        self.data = data
+        self.collectionView = collectionView
+        self.delegate = delegate
+        super.init()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharCVC", for: indexPath) as! CharacterCVC
+        cell.configCell(with: data[indexPath.row])
+        return cell
+    }
+    
+    func setupCollectionView() {
+        self.collectionView?.dataSource = self
+        self.collectionView?.delegate = self.delegate
+        self.collectionView?.reloadData()
+    }
+}
+
+class MarvelCollectionViewDelegate: NSObject, UICollectionViewDelegate {
+    let delegate: CharactersDelegate
+    
+    init(_ delegate: CharactersDelegate) {
+        self.delegate = delegate
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate.didSelectCharacter(at: indexPath)
+    }
+}
+
+// MARK: CollectionView DataSource and Delegate
+class MarvelTableViewDatasource: NSObject, UITableViewDataSource {
+    
+    var data = [Character]()
+    weak var delegate: UITableViewDelegate?
+    weak var tableView: UITableView?
+    
+    required init(data: [Character], tableView: UITableView, delegate: UITableViewDelegate) {
+        self.data = data
+        self.tableView = tableView
+        self.delegate = delegate
+        super.init()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let charTableCell = tableView.dequeueReusableCell(withIdentifier: "CharactersTableCell", for: indexPath) as! CharacterTVC
+        charTableCell.configCell(with: self.data[indexPath.row])
+        return charTableCell
+    }
+    
+    func setupTableView() {
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self.delegate
+        self.tableView?.reloadData()
+    }
+}
+
+class MarvelTableViewDelegate: NSObject, UITableViewDelegate {
+    let delegate: CharactersDelegate
+    
+    init(_ delegate: CharactersDelegate) {
+        self.delegate = delegate
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate.didSelectCharacter(at: indexPath)
+    }
+}
 
 
-
-
-
-
-
+protocol CharactersDelegate {
+    func didSelectCharacter(at index: IndexPath)
+}
 
 
 

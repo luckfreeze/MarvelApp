@@ -23,7 +23,7 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     
     private var marvelApi = MarvelAPI()
     
-    private(set) var myChars = [Characters]()
+    private(set) var myChars = [Character]()
     
     private var refrshControl = UIRefreshControl()
     
@@ -31,6 +31,12 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
     private var offSet = 0
     
     private var showAs = GridTable.tableView
+    
+    private var tableViewDataSource: MarvelTableViewDatasource?
+    private var tableViewDelegate: MarvelTableViewDelegate?
+    
+    private var collectionViewViewDataSource: MarvelCollectionViewDatasource?
+    private var collectionViewDelegate: MarvelCollectionViewDelegate?
     
     var selectedIndexPath: IndexPath?
     
@@ -46,13 +52,16 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         
         view.addSubview(spinner)
         spinner.start()
+
+        tableViewDelegate = MarvelTableViewDelegate(self)
+        tableViewDataSource = MarvelTableViewDelegate(items: characters, tableView: self.tableView, delegate: tableDelegate!)
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.refreshControl = refrshControl
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.refreshControl = refrshControl
+//
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
         //collectionView.refreshControl = refrshControl
         
         errorButton.delegate = self
@@ -92,7 +101,7 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
             
             guard let vc = self else { return }
             
-            if error == nil {
+            if error == .NoError {
                 vc.myChars += chars
                 vc.collectionView.reloadData()
                 vc.tableView.reloadData()
@@ -115,22 +124,29 @@ class CharactersVC: UIViewController, ErrorButtonDelegate {
         
         switch self.showAs {
         case .tableView:
-            let tablV = self.tableView.cellForRow(at: indexP) as? CharactersTVC
+            let tablV = self.tableView.cellForRow(at: indexP) as? CharacterTVC
             thumb = tablV?.thumb.image
         case .collectionView:
-            let collV = self.collectionView.cellForItem(at: indexP) as? CharactersCVC
+            let collV = self.collectionView.cellForItem(at: indexP) as? CharacterCVC
             thumb = collV?.thumb.image
         }
         
         self.selectedIndexPath = indexP
         
         vc.name = myChars[row].name
-        vc.bio = myChars[row].biography
-        vc.thumbPath = myChars[row].thumb.getPath()
+        vc.bio = myChars[row].description
+        vc.thumbPath = myChars[row].thumbnail.getCharThumbnail()
         vc.image = thumb
     
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension CharacterVC: CharactersDelegate {
+    func didSelectCharacter(at index: IndexPath) {
+        print(index)
+    }
+
 }
 
 // MARK: Animations
@@ -191,10 +207,10 @@ extension CharactersVC: ZoomTransitionDelegate {
         let thumbIV: UIImageView!
         switch self.showAs {
         case .tableView:
-            let tablV = self.tableView.cellForRow(at: selectedIndexPath!) as? CharactersTVC
+            let tablV = self.tableView.cellForRow(at: selectedIndexPath!) as? CharacterTVC
             thumbIV = tablV?.thumb
         case .collectionView:
-            let collV = self.collectionView.cellForItem(at: selectedIndexPath!) as? CharactersCVC
+            let collV = self.collectionView.cellForItem(at: selectedIndexPath!) as? CharacterCVC
             thumbIV = collV?.thumb
     }
         return thumbIV

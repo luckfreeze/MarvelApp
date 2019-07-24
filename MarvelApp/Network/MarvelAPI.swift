@@ -21,11 +21,11 @@ class MarvelAPI {
     
     private var authParams: Parameters?
     
-    typealias MarvelCompletion = (Error?, [Characters]) -> Void
+    typealias MarvelCompletion = (MarvelAPIError, [Character]) -> Void
     
     func getCharacters(completion: @escaping MarvelCompletion) {
         
-        var charsData = [Characters]()
+        var charsData = [Character]()
         
         authParams = [
             "apikey": MarvelKeys.publicKey,
@@ -37,7 +37,6 @@ class MarvelAPI {
         
         Alamofire.request(MarvelURL.characters, parameters: authParams).responseJSON { response in
             
-            let error = response.error
             let result = response.result
             
             print("\n\n - RESPONSE:")

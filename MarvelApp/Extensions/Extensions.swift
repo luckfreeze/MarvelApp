@@ -7,11 +7,13 @@
 //
 
 import UIKit
-import Kingfisher
+import Nuke
 
 extension UIImageView {
-    func downloadImage(path: String) {
-        let url = URL(string: path)
-        self.kf.setImage(with: url)
+    func downloadImage(path: String, completion: @escaping () -> Void) {
+        let pathUrl = URL(string: path)!
+        Nuke.loadImage(with: pathUrl, options: ImageLoadingOptions.shared, into: self, progress: nil) { (_, _) in
+            completion()
+        }
     }
 }

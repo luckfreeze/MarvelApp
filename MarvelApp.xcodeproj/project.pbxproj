@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		373C49060486B3D170C730E7 /* Pods_MarvelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14F67CB1761161A64FE969F9 /* Pods_MarvelAppUITests.framework */; };
-		4E49051D209768C700B2460B /* CharactersCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E49051C209768C700B2460B /* CharactersCVC.swift */; };
+		4E49051D209768C700B2460B /* CharacterCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E49051C209768C700B2460B /* CharacterCVC.swift */; };
 		4E9EA3A02093BF7100134CF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9EA39F2093BF7100134CF4 /* AppDelegate.swift */; };
 		4E9EA3A22093BF7100134CF4 /* CharactersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9EA3A12093BF7100134CF4 /* CharactersVC.swift */; };
 		4E9EA3A52093BF7100134CF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E9EA3A32093BF7100134CF4 /* Main.storyboard */; };
@@ -18,7 +18,7 @@
 		4E9EA3C02093BF7E00134CF4 /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9EA3BF2093BF7E00134CF4 /* MarvelAppUITests.swift */; };
 		4E9EA3D82093CD5800134CF4 /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9EA3D72093CD5800134CF4 /* MarvelAPI.swift */; };
 		4E9EA3DA2093E91A00134CF4 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9EA3D92093E91A00134CF4 /* Characters.swift */; };
-		4EAF39A520994C1E00B2D085 /* CharactersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAF39A420994C1E00B2D085 /* CharactersTVC.swift */; };
+		4EAF39A520994C1E00B2D085 /* CharacterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAF39A420994C1E00B2D085 /* CharacterTVC.swift */; };
 		4EAF39A720994F7F00B2D085 /* CharactersTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAF39A620994F7F00B2D085 /* CharactersTC.swift */; };
 		4EB13E5221ACA3E900203B7A /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB13E5121ACA3E800203B7A /* Metrics.swift */; };
 		4ECEDEFE209793600087D76C /* Classical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECEDEFD209793600087D76C /* Classical.swift */; };
@@ -55,7 +55,7 @@
 		14F67CB1761161A64FE969F9 /* Pods_MarvelAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3956F663E3B309234663C906 /* Pods-MarvelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelAppTests/Pods-MarvelAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		4A86DE9D6A4F43C8E999C7DE /* Pods_MarvelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E49051C209768C700B2460B /* CharactersCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCVC.swift; sourceTree = "<group>"; };
+		4E49051C209768C700B2460B /* CharacterCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCVC.swift; sourceTree = "<group>"; };
 		4E50D134B5784FE78922199A /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
 		4E9EA39C2093BF7100134CF4 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E9EA39F2093BF7100134CF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		4E9EA3C12093BF7E00134CF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E9EA3D72093CD5800134CF4 /* MarvelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		4E9EA3D92093E91A00134CF4 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
-		4EAF39A420994C1E00B2D085 /* CharactersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTVC.swift; sourceTree = "<group>"; };
+		4EAF39A420994C1E00B2D085 /* CharacterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTVC.swift; sourceTree = "<group>"; };
 		4EAF39A620994F7F00B2D085 /* CharactersTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTC.swift; sourceTree = "<group>"; };
 		4EB13E5121ACA3E800203B7A /* Metrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
 		4ECEDEFD209793600087D76C /* Classical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classical.swift; sourceTree = "<group>"; };
@@ -258,8 +258,8 @@
 		844A95662203BBC300ECD903 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4E49051C209768C700B2460B /* CharactersCVC.swift */,
-				4EAF39A420994C1E00B2D085 /* CharactersTVC.swift */,
+				4E49051C209768C700B2460B /* CharacterCVC.swift */,
+				4EAF39A420994C1E00B2D085 /* CharacterTVC.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -554,8 +554,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE91EE5C20E5163900227855 /* AlertService.swift in Sources */,
-				4E49051D209768C700B2460B /* CharactersCVC.swift in Sources */,
-				4EAF39A520994C1E00B2D085 /* CharactersTVC.swift in Sources */,
+				4E49051D209768C700B2460B /* CharacterCVC.swift in Sources */,
+				4EAF39A520994C1E00B2D085 /* CharacterTVC.swift in Sources */,
 				4E9EA3A22093BF7100134CF4 /* CharactersVC.swift in Sources */,
 				4EAF39A720994F7F00B2D085 /* CharactersTC.swift in Sources */,
 				4E9EA3D82093CD5800134CF4 /* MarvelAPI.swift in Sources */,
@@ -745,14 +745,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YMJ3466P6S;
 				INFOPLIST_FILE = "$(SRCROOT)/MarvelApp/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.LSolutions.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -765,14 +765,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YMJ3466P6S;
 				INFOPLIST_FILE = "$(SRCROOT)/MarvelApp/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.LSolutions.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

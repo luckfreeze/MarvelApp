@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharactersTVC: UITableViewCell {
+class CharacterTVC: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var biography: UILabel!
@@ -21,9 +21,12 @@ class CharactersTVC: UITableViewCell {
     }
     
     // Avoiding massive cell for row at indexPath
-    func configCell(data: Characters) {
+    func configCell(with data: Character) {
         self.name.text = data.name
-        self.biography.text = data.biography.isEmpty ? "No description" : data.biography
-        self.thumb.downloadImage(path: data.thumb.getPath())
+        self.biography.text = data.description.isEmpty ? "No description" : data.description
+            //data.biography.isEmpty ? "No description" : data.biography
+        self.thumb.downloadImage(path: data.thumbnail.getCharThumbnail()) {
+            
+        }
     }
 }

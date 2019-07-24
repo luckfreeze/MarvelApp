@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharactersCVC: UICollectionViewCell {
+class CharacterCVC: UICollectionViewCell {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var thumb: UIImageView!
@@ -20,8 +20,10 @@ class CharactersCVC: UICollectionViewCell {
     }
     
     // Avoiding massive cell for row at indexPath
-    func configCell(data: Characters) {
+    func configCell(with data: Character) {
         self.name.text = data.name
-        self.thumb.downloadImage(path: data.thumb.getPath())
+        self.thumb.downloadImage(path: data.thumbnail.getCharThumbnail()) {
+            
+        }
     }
 }
